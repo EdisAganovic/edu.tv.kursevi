@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="60">
+    <title>Digital Signage - Kulturni centar Kralj Fahd Sarajevo</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Course Status Boxes at the Top -->
+        <div class="course-status-top">
+            <div class="course-status">
+                {% for course, info in courses.items() %}
+                    <div class="course-box {% if info.open %}open{% else %}closed{% endif %}">
+                        <h2 class="course-name">{{ info.name }}</h2>
+                        <h3 class="course-status-text">{% if info.open %}Otvoreni upisi{% else %}Upisi počinju 06.10.2025.{% endif %}</h3>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Main Title -->
+        <section class="main-title">
+        </section>
+
+        <!-- Dynamic Content Area -->
+        <section class="content-area">
+            <div id="content-container">
+                <!-- Content will be loaded here dynamically -->
+                <div class="placeholder">Loading content...</div>
+            </div>
+        </section>
+    </div>
+
+    <script src="/static/js/main.js"></script>
+    <script>
+        // Pass data from backend to JavaScript
+        window.courseData = {{ all_slides | tojson }};
+        window.openCourses = {{ open_courses | tojson }};
+    </script>
+</body>
+</html>

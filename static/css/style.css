@@ -1,0 +1,231 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.header {
+    text-align: center;
+    padding: 10px 0;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    color: #fff;
+}
+
+.main-title {
+    text-align: center;
+    margin-bottom: 10px; /* Reduced margin since there's no title text */
+}
+
+.content-area {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    min-height: 60vh;
+    width: 100%;
+}
+
+#content-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slide-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.slide-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-align: center;
+    width: 100%;
+}
+
+.grid-3x3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 20px;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+}
+
+.grid-2x1 {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    grid-template-rows: 1fr; /* One row that fills height */
+    grid-gap: 20px;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+}
+
+.grid-item {
+    background-color: #333;
+    border: none;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    box-sizing: border-box;
+    position: relative;
+    min-height: 100%;
+    background-blend-mode: multiply;
+}
+
+.grid-item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: inherit;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.4;
+    z-index: 1;
+}
+
+.grid-item::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    z-index: 2;
+    pointer-events: none;
+}
+
+.grid-item > h1,
+.grid-item > h3 {
+    position: relative;
+    z-index: 3;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.grid-item > h1:last-child,
+.grid-item > h3:last-child {
+    margin-bottom: 0;
+}
+
+.placeholder {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.course-status {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.course-status-top {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.course-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Align content vertically */
+    padding: 10px;
+    min-width: 0; /* Allow flex item to shrink below content size */
+    flex: 1; /* Expand to fill available space */
+    margin: 0; /* No margins */
+    height: 160px; /* Set specific height */
+}
+
+.course-box.open {
+    background-color: #10b981; /* Solid background for open courses */
+}
+
+.course-box.closed {
+    background-color: #b91c1c; /* Solid background for closed courses */
+}
+
+.course-status-text {
+    font-size: 1.8rem; /* Increased font size */
+    font-weight: bold;
+    text-align: center;
+    margin: 15px 0 0 0; /* top right bottom left */
+    padding: 5px 10px;
+    border-radius: 4px;
+    color: white;
+}
+
+.course-box.open .course-status-text {
+    background-color: #27ae60; /* Darker green for open status text */
+}
+
+.course-box.closed .course-status-text {
+    background-color: #c0392b; /* Darker red for closed status text */
+}
+
+.course-name {
+    font-size: 2.6rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* Animation for content transitions */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.slide-transition {
+    animation: fadeIn 0.5s ease-in-out;
+}
