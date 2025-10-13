@@ -13,7 +13,7 @@
         <div class="course-status-top">
             <div class="course-status">
                 {% for course, info in courses.items() %}
-                    <div class="course-box {% if info.open %}open{% else %}closed{% endif %}">
+                    <div class="course-box {% if info.open %}open{% else %}closed{% endif %}" data-course="{{ course }}">
                         <h2 class="course-name">{{ info.name }}</h2>
                         <h3 class="course-status-text">{% if info.open %}Otvoreni upisi{% else %}Upisi počinju 06.10.2025.{% endif %}</h3>
                     </div>
@@ -21,12 +21,16 @@
             </div>
         </div>
 
+        <!-- Registration Status Message -->
+       
+
         <!-- Main Title -->
         <section class="main-title">
         </section>
 
         <!-- Dynamic Content Area -->
         <section class="content-area">
+            
             <div id="content-container">
                 <!-- Content will be loaded here dynamically -->
                 <div class="placeholder">Loading content...</div>

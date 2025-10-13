@@ -93,7 +93,7 @@ body {
 }
 
 .grid-item {
-    background-color: #333;
+    background-color: #666; /* Lighter background color */
     border: none;
     border-radius: 5px;
     padding: 20px;
@@ -131,7 +131,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.39), transparent); /* 30% less than 0.56: 0.56 * 0.7 = 0.39 */
     z-index: 2;
     pointer-events: none;
 }
@@ -184,6 +184,24 @@ body {
     flex: 1; /* Expand to fill available space */
     margin: 0; /* No margins */
     height: 160px; /* Set specific height */
+    cursor: pointer; /* Show that it's clickable */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Add smooth transition */
+    position: relative;
+    z-index: 10;
+}
+
+.course-box:hover {
+    transform: translateY(-3px); /* Slight lift on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+}
+
+.course-box:active {
+    transform: translateY(0); /* Reset position when clicked */
+}
+
+.course-box.active {
+    background-color: #0a7d51 !important; /* Darker green for active course */
+    z-index: 20; /* Ensure active course is on top */
 }
 
 .course-box.open {
@@ -220,6 +238,15 @@ body {
     padding: 0;
 }
 
+.course-registration-active {
+    color: #e74c3c; /* Red color */
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
 /* Animation for content transitions */
 @keyframes fadeIn {
     from { opacity: 0; }
@@ -228,4 +255,143 @@ body {
 
 .slide-transition {
     animation: fadeIn 0.5s ease-in-out;
+}
+/* General styling for the slide container */
+.immersive-slide {
+    position: relative; /* Needed for the overlay */
+    background-image: url('/static/content/cal/slika.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh; /* Make it full-screen */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    font-family: 'Helvetica Neue', Arial, sans-serif; /* Example of a clean font */
+}
+
+/* Dark overlay to make text readable against the background image */
+.immersive-slide .slide-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    z-index: 1;
+}
+
+/* Container for the text content, sits above the overlay */
+.immersive-slide .slide-text {
+    position: relative; /* Ensures text is on top of the overlay */
+    z-index: 2;
+    padding: 2rem;
+}
+
+/* --- Typography --- */
+.immersive-slide .slide-title {
+    font-size: 5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.7); /* Adds depth */
+}
+
+.immersive-slide .slide-tagline {
+    font-size: 2rem;
+    font-weight: 300; /* Lighter font weight for the tagline */
+    margin-bottom: 2rem;
+    font-style: italic;
+}
+
+.immersive-slide .slide-description {
+    font-size: 1.5rem;
+    line-height: 1.6;
+}/* Use CSS Grid for a powerful and clean layout */
+.asymmetrical-slide {
+    display: grid !important; /* Override parent flexbox */
+    grid-template-columns: 1fr; /* Single column layout */
+    width: 100% !important;
+    height: 100% !important; /* Fill parent container */
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    min-height: 60vh; /* Minimum height to ensure visibility */
+    overflow: hidden; /* Prevent any overflow */
+    position: relative; /* Position context for absolute positioning */
+}
+.kaligrafija {
+    background-image: url('/static/content/cal/slika.jpg');
+}
+.engleski {
+    background-image: url('/static/content/eng/slika.jpg');
+}
+/* --- Panel Styling --- */
+.asymmetrical-slide .image-panel {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%; /* Ensure it fills the container */
+    height: 100%; /* Ensure it fills the container */
+    position: absolute; /* Position absolutely to fill background */
+    top: 0;
+    left: 0;
+    z-index: 1; /* Behind the text panel */
+}
+
+/* Ensure the image panel gets the background image from its parent */
+.kaligrafija .image-panel {
+    background-image: url('/static/content/cal/slika.jpg');
+}
+
+.engleski .image-panel {
+    background-image: url('/static/content/eng/slika.jpg');
+}
+
+.arapski .image-panel {
+    background-image: url('/static/content/ar/slika.jpg');
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+}
+
+
+
+.asymmetrical-slide .text-panel {
+    background-color: rgba(43, 43, 43, 0.85); /* Semi-transparent dark background */
+    color: white;
+    padding: 2.5rem;
+    position: absolute; /* Position absolutely */
+    top: 50%;
+    right: 5%;
+    transform: translateY(-50%); /* Center vertically */
+    min-width: 25%; /* Smaller width */
+    max-width: 35%;
+    z-index: 2; /* In front of the image panel */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Add shadow for depth */
+}
+
+.asymmetrical-slide .text-panel h2 {
+    text-align: left;
+}
+.asymmetrical-slide .text-panel h3 {
+    font-size: 1.5rem;
+}
+
+/* --- Typography --- */
+.asymmetrical-slide .slide-title {
+    font-size: 5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.asymmetrical-slide .slide-tagline {
+    font-size: 1.8rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+    color: #cccccc; /* A slightly lighter grey for contrast */
+}
+
+.asymmetrical-slide .slide-description {
+    font-size: 1.25rem;
+    line-height: 1.7;
 }

@@ -16,9 +16,9 @@ templates = Jinja2Templates(directory="templates")
 
 # Course configuration - which courses are open
 COURSE_STATUS = {
-    "it": {"name": "Informatički kursevi", "open": True},
-    "ar": {"name": "Arapski jezik", "open": False},
-    "eng": {"name": "Engleski jezik", "open": False},
+    "it": {"name": "Informatika", "open": True},
+    "ar": {"name": "Arapski jezik", "open": True},
+    "eng": {"name": "Engleski jezik", "open": True},
     "cal": {"name": "Kaligrafija", "open": True}
 }
 
