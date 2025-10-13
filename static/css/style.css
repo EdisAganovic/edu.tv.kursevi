@@ -291,7 +291,7 @@ body {
 
 /* --- Typography --- */
 .immersive-slide .slide-title {
-    font-size: 5rem;
+    font-size: 3.5rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
     text-shadow: 2px 2px 8px rgba(0,0,0,0.7); /* Adds depth */
@@ -364,7 +364,7 @@ body {
     right: 5%;
     transform: translateY(-50%); /* Center vertically */
     min-width: 25%; /* Smaller width */
-    max-width: 35%;
+    max-width: 45%;
     z-index: 2; /* In front of the image panel */
     border-radius: 10px; /* Rounded corners */
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Add shadow for depth */
